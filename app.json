@@ -1,0 +1,12 @@
+{
+  "name": "components-expo-rn",
+  "displayName": "components-expo-rn",
+  "expo": {
+    "name": "components-expo-rn",
+    "slug": "components-expo-rn",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
