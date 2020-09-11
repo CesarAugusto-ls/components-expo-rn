@@ -4,12 +4,8 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import * as Location from 'expo-location';
 
 const Maps = (props) => {
-    const [location, setLocation] = React.useState(props.location);
+    const [location, setLocation] = React.useState(null);
     const [errorMsg, setErrorMsg] = React.useState(null);
-
-    React.useEffect(() => {
-        setLocation(props.location);
-    }, [props.location])
 
     React.useEffect(() => {
         firstRequest();
@@ -22,15 +18,16 @@ const Maps = (props) => {
 
             Location.watchPositionAsync({
                 accuracy: Location.Accuracy.Balanced,
-                distanceInterval: 100,
-            }, (location) => {
+                distanceInterval: 10,
+            }, (newLocation) => {
                 setLocation({
-                    latitude: location.coords.latitude,
-                    longitude: location.coords.longitude,
+                    latitude: newLocation.coords.latitude,
+                    longitude: newLocation.coords.longitude,
                     latitudeDelta: 0.01,
                     longitudeDelta: 0.01,
-                    speed: location.coords.speed * 3.6
+                    speed: newLocation.coords.speed * 3.6
                 });
+                props.updateSpeed(newLocation.coords.speed * 3.6)
             },
                 error => {
                     console.log(error)
