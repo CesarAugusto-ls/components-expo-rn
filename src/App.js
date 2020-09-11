@@ -1,19 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Dimensions, View } from 'react-native';
 import Maps from './components/Maps';
 import Speedometer from './components/Speedometer';
 
 export default function App() {
-  const [speed, setSpeed] = React.useState(0);
+  const [location, setLocation] = React.useState(null);
 
   return (
     <View style={styles.container}>
       <Maps
-        updateSpeed={(speed) => setSpeed(speed)}
+        style={styles.mapStyle}
+        onUpdateLocation={(newLocation) => setLocation(newLocation)}
       />
       <Speedometer
-        speed={speed}
+        speed={location ? location.speed : 0}
       />
       <StatusBar style="auto" />
     </View>
@@ -26,5 +27,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  mapStyle: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
   },
 });
