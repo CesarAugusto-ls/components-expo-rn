@@ -39,6 +39,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Precisamos da sua localozação para funcionamento do app!</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localozação para funcionamento do app!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Precisamos da sua localozação para funcionamento do app!</string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
